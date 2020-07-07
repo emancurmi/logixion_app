@@ -4,7 +4,7 @@ import './Header.css';
 export default class Header extends Component {
     render() {
         return (
-            <h1>LogixOn App</h1>
+            <h1>Logi<strong className="red">X</strong>On</h1>
         )
     }
 }

@@ -1,0 +1,37 @@
+nav {
+    font-size: 18px;
+    font-weight: 700;
+    text-shadow: 3px 3px 5px #B9C0C9;
+}
+
+.main-nav {
+    display: flex;
+}
+
+.push {
+    margin-left: auto;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+    margin: 5px;
+}
+
+    li a {
+        display: block;
+        color: #1e1e1e;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+        li a:hover {
+            border-bottom: #febcc8 solid 2px;
+        }
