@@ -5,6 +5,7 @@ import config from './config';
 import Home from './Components/Home/Home';
 import About from './Components/About/About';
 import Tourbench from './Components/Tourbench/Tourbench';
+import StepsList from './Components/StepsList/StepsList';
 
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
@@ -26,6 +27,7 @@ class App extends Component {
                     <Route path="/login" component={Login} />
                     <Route path="/register" component={Register} />
                     <Route path="/tourbench/" component={Tourbench} />
+                    <Route path="/stepslist/" component={StepsList} />
                     <Route path="/about" component={About} />
                 </div>
                 <Footer/>

@@ -7,6 +7,7 @@ import TutorialsList from '../TutorialsList/TutorialsList';
 export default class Tourbench extends Component {
 
     render() {
+
         return (
             <div>
                 <h1>Tutorials</h1>
