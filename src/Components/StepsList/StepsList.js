@@ -14,6 +14,7 @@ export default class StepsList extends Component {
         this.state = {
             config: config,
             tutorialid: query.get('tutorialid'),
+            tutorialname: query.get('tutorialname'),
             steps: [],
             error: null,
         }
@@ -50,8 +51,8 @@ export default class StepsList extends Component {
     }
 
     componentDidMount() {
-        console.log(this.state.config.API_ENDPOINT + 'api/steps/');
-        fetch(this.state.config.API_ENDPOINT + 'api/steps/', {
+        console.log(this.state.config.API_ENDPOINT + 'api/steps/' + '?tutorialid =' + this.state.tutorialid);
+        fetch(this.state.config.API_ENDPOINT + 'api/steps/' + '?tutorialid=' + this.state.tutorialid, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
@@ -81,15 +82,15 @@ export default class StepsList extends Component {
         }
 
         const gensteplist = contextValue.steps.map((step, i) => {
-            if (step.tutorialid == this.state.tutorialid) {
-                return <Step id={step.id} element={step.element} placement={step.placement} title={step.title} content={step.content} key={i} />
-            }
+            return <Step id={step.id} element={step.element} placement={step.placement} title={step.title} content={step.content} key={i} />
         })
 
         return (
             <div>
                 <h1>Steps in </h1>
+                <div className="flexbox">
                     {gensteplist}
+                </div>
             </div>
         )
     }

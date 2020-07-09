@@ -1,0 +1,6 @@
+.flexbox {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: space-between;
+    justify-content: center;
+}

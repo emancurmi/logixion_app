@@ -9,6 +9,7 @@ export default class TutorialList extends Component {
         super(props);
         this.state = {
             config: props.config,
+            userid: 1,
             tutorials: [],
             error: null,
         }
@@ -45,7 +46,7 @@ export default class TutorialList extends Component {
     }
 
     componentDidMount() {
-        fetch(this.state.config.API_ENDPOINT + 'api/tutorials', {
+        fetch(this.state.config.API_ENDPOINT + 'api/tutorials/' + '?userid=' + this.state.userid, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
@@ -79,7 +80,7 @@ export default class TutorialList extends Component {
         })
 
         return (
-                <div>
+            <div className="flexbox">
                 {gentutoriallist}
                 </div>
             )
