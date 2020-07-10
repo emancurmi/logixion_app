@@ -82,7 +82,18 @@ export default class TutorialList extends Component {
         return (
             <div className="flexbox">
                 {gentutoriallist}
+
+                <div class="card">
+                    <h3>Create New</h3>
+                    <br />
+                    <p>Tutorial</p>
+                    <br />
+                    <br />
+                    <br />
+                    <button id="btnCreate" className="btn"><span>Create New</span></button>
+
                 </div>
-            )
+            </div>
+        )
     }
 }

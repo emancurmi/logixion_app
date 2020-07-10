@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import config from './config';
 
 import Home from './Components/Home/Home';
 import About from './Components/About/About';
@@ -9,12 +8,15 @@ import StepsList from './Components/StepsList/StepsList';
 
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
+import AddStep from './Components/AddStep/AddStep';
+import AddTutorial from './Components/AddTutorial/AddTutorial';
 
 import Header from './Components/Header/Header';
 import Nav from './Components/Nav/Nav';
 import Footer from './Components/Footer/Footer';
 
 import './App.css';
+
 
 class App extends Component {
     render() {
@@ -28,6 +30,8 @@ class App extends Component {
                     <Route path="/register" component={Register} />
                     <Route path="/tourbench/" component={Tourbench} />
                     <Route path="/stepslist/" component={StepsList} />
+                    <Route path="/addstep" component={AddStep} />
+                    <Route path="/addtutorial" component={AddTutorial} />
                     <Route path="/about" component={About} />
                 </div>
                 <Footer/>

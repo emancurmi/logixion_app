@@ -87,9 +87,20 @@ export default class StepsList extends Component {
 
         return (
             <div>
-                <h1>Steps in </h1>
+                <h1>Steps in {this.state.tutorialname}</h1>
                 <div className="flexbox">
                     {gensteplist}
+
+                    <div class="card">
+                        <h3>Create New</h3>
+                        <br />
+                        <p>Card</p>
+                        <br />
+                        <br />
+                        <br />
+                        <button id="btnCreate" className="btn" onClick="parent.location='index.html'"><span>Create New</span></button>
+
+                    </div>
                 </div>
             </div>
         )

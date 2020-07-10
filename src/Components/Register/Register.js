@@ -5,7 +5,7 @@ export default class Register extends Component {
     render() {
         return (
             <div className="center red-strip">
-                <h3>Register</h3>
+                <h1>Register</h1>
                 <form>
                     <input type="Text" placeholder="Username" required /><br />
                     <input type="password" placeholder="Password" required /><br /><br />
