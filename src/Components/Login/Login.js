@@ -18,10 +18,10 @@ export default class Login extends Component {
                 <div className="left">
                     <h2>Why is good to register</h2>
                     <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li>Save Your Progress</li>
+                        <li>Save Your Tutorials</li>
+                        <li>Create more then one tutorial</li>
+                        <li>Ability to add to your website</li>
                     </ul>
                     </div>
             </div>

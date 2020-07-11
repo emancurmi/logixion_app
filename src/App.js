@@ -10,6 +10,9 @@ import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
 import AddStep from './Components/AddStep/AddStep';
 import AddTutorial from './Components/AddTutorial/AddTutorial';
+import EditStep from './Components/EditStep/EditStep';
+import EditTutorial from './Components/EditTutorial/EditTutorial';
+
 
 import Header from './Components/Header/Header';
 import Nav from './Components/Nav/Nav';
@@ -32,6 +35,8 @@ class App extends Component {
                     <Route path="/stepslist/" component={StepsList} />
                     <Route path="/addstep" component={AddStep} />
                     <Route path="/addtutorial" component={AddTutorial} />
+                    <Route path="/editstep" component={EditStep} />
+                    <Route path="/edittutorial" component={EditTutorial} />
                     <Route path="/about" component={About} />
                 </div>
                 <Footer/>

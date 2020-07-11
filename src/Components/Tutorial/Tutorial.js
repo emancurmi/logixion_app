@@ -1,7 +1,7 @@
-import React from 'react'
-import './Tutorial.css'
-import { Component } from 'react'
-import { rute, Link } from 'react-router-dom'
+import React from 'react';
+import './Tutorial.css';
+import { Component } from 'react';
+import { rute, Link } from 'react-router-dom';
 import StepsList from '../StepsList/StepsList';
 
 export default class Tutorial extends Component {
@@ -17,16 +17,17 @@ export default class Tutorial extends Component {
 
     render() {
         return (
-            <Link to={`../stepslist/?tutorialid=${this.state.id}&tutorialname=${this.state.name}`}>
-                <div class="card">
+            
+                <div className="card">
                     <h3>{this.state.name}</h3>
                     <p>{this.state.url}</p>
                     <br />
-                    <button id="btnEdit" className="btn"><span>Edit</span></button>
+                <Link to={`../stepslist/?tutorialid=${this.state.id}&tutorialname=${this.state.name}`}><button id="btnSteps" className="btn"><span>Edit Steps</span></button></Link>
+                    <br />
+                <Link to={`../edittutorial?tutorialid=${this.state.id}`}><button id="btnEdit" className="btn"><span>Edit Name</span></button></Link>
                     <br/>
-                    <button id="btnDelete" className="btn"><span>Delete</span></button>
+                <Link to={`../stepslist/?tutorialid=${this.state.id}&tutorialname=${this.state.name}`}><button id="btnDelete" className="btn"><span>Delete</span></button></Link>
                 </div>
-            </Link>
         )
     }
 }

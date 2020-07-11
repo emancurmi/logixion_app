@@ -33,7 +33,9 @@
     text-align: right;
 }
 
-input {
+input, textarea {
+    width: 242px;
+    boder:2px;
     padding: 5px;
     margin: 5px;
 }

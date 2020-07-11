@@ -2,7 +2,9 @@ import React from 'react';
 import './StepsList.css';
 import { Component } from 'react';
 import config from '../../config';
+import { rute, Link } from 'react-router-dom';
 import Step from '../Step/Step';
+import Loader from '../Loader/Loader';
 
 export default class StepsList extends Component {
 
@@ -17,13 +19,15 @@ export default class StepsList extends Component {
             tutorialname: query.get('tutorialname'),
             steps: [],
             error: null,
+            isLoading: true
         }
     }
 
     setSteps = steps => {
         this.setState({
             steps,
-            error: null
+            error: null,
+            isLoading: false
         })
     }
 
@@ -51,7 +55,6 @@ export default class StepsList extends Component {
     }
 
     componentDidMount() {
-        console.log(this.state.config.API_ENDPOINT + 'api/steps/' + '?tutorialid =' + this.state.tutorialid);
         fetch(this.state.config.API_ENDPOINT + 'api/steps/' + '?tutorialid=' + this.state.tutorialid, {
             method: 'GET',
             headers: {
@@ -74,6 +77,12 @@ export default class StepsList extends Component {
 
     render() {
 
+        if (this.state.isLoading) {
+            return (
+                <Loader loadingtype={"Steps"} />
+            );
+        }
+
         const contextValue = {
             steps: this.state.steps,
             addStep: this.addStep,
@@ -92,16 +101,19 @@ export default class StepsList extends Component {
                     {gensteplist}
 
                     <div class="card">
-                        <h3>Create New</h3>
-                        <br />
-                        <p>Card</p>
+                        <h3>Create New Step</h3>
                         <br />
                         <br />
-                        <br />
-                        <button id="btnCreate" className="btn" onClick="parent.location='index.html'"><span>Create New</span></button>
-
+                        <Link to={`/addstep?tutorialid=${this.state.tutorialid}`}>
+                            <button id="btnCreate" className="btn" onClick="parent.location='index.html'">
+                                <span>Start</span>
+                            </button>
+                        </Link>
                     </div>
+
                 </div>
+                <br />
+                <Link to={"/tourbench"}><button id="btnBack" className="btn"><span>Back to Tutorial List</span></button></Link>
             </div>
         )
     }

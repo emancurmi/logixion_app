@@ -1,7 +1,9 @@
 import React from 'react';
 import './TutorialsList.css';
 import { Component } from 'react';
+import { rute, Link } from 'react-router-dom';
 import Tutorial from '../Tutorial/Tutorial';
+import Loader from '../Loader/Loader';
 
 export default class TutorialList extends Component {
 
@@ -12,13 +14,15 @@ export default class TutorialList extends Component {
             userid: 1,
             tutorials: [],
             error: null,
+            isLoading: true
         }
     }
 
     setTutorials = tutorials => {
         this.setState({
             tutorials,
-            error: null
+            error: null,
+            isLoading: false
         })
     }
 
@@ -68,6 +72,12 @@ export default class TutorialList extends Component {
 
     render() {
 
+        if (this.state.isLoading) {
+            return (
+                <Loader loadingtype={"Tutorials"}/>
+            );
+        }
+
         const contextValue = {
             tutorials: this.state.tutorials,
             addTutorial: this.addTutorial,
@@ -82,17 +92,14 @@ export default class TutorialList extends Component {
         return (
             <div className="flexbox">
                 {gentutoriallist}
-
+                
                 <div class="card">
-                    <h3>Create New</h3>
-                    <br />
-                    <p>Tutorial</p>
-                    <br />
-                    <br />
-                    <br />
-                    <button id="btnCreate" className="btn"><span>Create New</span></button>
+                    <h3>Create New Tutorial</h3>
+                    <br /><br />
+                    <br /><br />
+                    <Link to={"/addtutorial"}><button id="btnCreate" className="btn"><span>Start</span></button></Link>
 
-                </div>
+                    </div>
             </div>
         )
     }
