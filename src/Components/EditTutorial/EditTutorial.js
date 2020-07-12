@@ -3,7 +3,7 @@ import { rute, Link, Redirect, BrowserRouter } from 'react-router-dom';
 import config from '../../config';
 import './EditTutorial.css';
 
-export default class AddTutorial extends Component {
+export default class EditTutorial extends Component {
 
     constructor(props) {
         const query = new URLSearchParams(props.location.search);
@@ -16,7 +16,6 @@ export default class AddTutorial extends Component {
             userid: 1,
             error: null
         }
-        console.log(this.state);
     }
 
     componentDidMount() {
@@ -51,7 +50,7 @@ export default class AddTutorial extends Component {
     };
 
     backtoTutorialList() {
-        return (<Redirect link={`/tourbench`}></Redirect>);
+        return <Redirect link={`/tourbench`}></Redirect>;
     }
 
     handleSubmit = e => {
@@ -92,7 +91,7 @@ export default class AddTutorial extends Component {
                         <input type="Text" id="name" name="name" placeholder="Name" required /><br />
                         <button id="btnSubmit" className="btn" type="submit"><span>Save Changes</span></button>
                         <br />
-                        <Link to={"/tourbench"}><button id="btnCancel" className="btn"><span>Cancel</span></button></Link>
+                        <Link to={"/tourbench"}><button id="btnCancel" className="btn"><span>Back to List</span></button></Link>
                     </form>
                 </div>
             </div>

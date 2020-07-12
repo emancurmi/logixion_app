@@ -50,7 +50,6 @@ export default class AddTutorial extends Component {
             })
     }
 
-
     render() {
         return (
             <div>
@@ -60,7 +59,7 @@ export default class AddTutorial extends Component {
                         <input type="Text" id="name" name="name" placeholder="Name" required /><br />
                         <button id="btnSubmit" className="btn" type="submit"><span>Add Tutorial</span></button>
                         <br />
-                        <Link to={"/tourbench"}><button id="btnCancel" className="btn"><span>Cancel</span></button></Link>
+                        <Link to={"/tourbench"}><button id="btnCancel" className="btn"><span>Back to List</span></button></Link>
                     </form>
                 </div>
             </div>

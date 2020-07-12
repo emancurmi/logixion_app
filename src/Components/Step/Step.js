@@ -4,28 +4,6 @@ import { Component } from 'react'
 import config from '../../config';
 import { rute, Link } from 'react-router-dom';
 
-//function deleteStepRequest(stepId, cb) {
-//    fetch(config.API_ENDPOINT + `/api/steps/${stepId}`, {
-//        method: 'DELETE',
-//        headers: {
-//            'content-type': 'application/json',
-//            'authorization': `bearer ${config.API_KEY}`
-//        }
-//    })
-//        .then(res => {
-//            if (!res.ok) {
-//                return res.json().then(error => Promise.reject(error))
-//            }
-//            return res.json()
-//        })
-//        .then(data => {
-//            cb(stepId)
-//        })
-//        .catch(error => {
-//            console.error(error)
-//        })
-//}
-
 export default class Step extends Component {
 
     constructor(props) {
@@ -39,6 +17,27 @@ export default class Step extends Component {
         }
     }
 
+    deleteStepRequest(stepId) {
+        fetch(this.state.config.API_ENDPOINT + `api/steps/${stepId}`, {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `bearer ${this.state.config.API_KEY}`
+            }
+        })
+            .then(res => {
+                if (!res.ok) {
+                    return res.json().then(error => Promise.reject(error))
+                }
+                return res.json()
+            })
+            .then(data => {
+                this.context.delteStep(stepId)
+            })
+            .catch(error => {
+                console.error(error)
+            })
+    }
 
     render() {
         return (
@@ -54,9 +53,8 @@ export default class Step extends Component {
                     <button id="btnEdit" className="btn"><span>Edit</span></button></Link>
                 <br />
                 <button id="btnDelete" className="btn"
-                    //onClick={() =>
-                    //    deleteStepRequest(props.id, context.deleteStep)
-                    //}
+                    onClick={this.deleteStepRequest
+                    }
                 ><span>Delete</span></button>
                 </div>
         )

@@ -3,7 +3,7 @@ import { rute, Link } from 'react-router-dom';
 import config from '../../config';
 import './EditStep.css';
 
-export default class AddStep extends Component {
+export default class EditStep extends Component {
 
     constructor(props) {
 
@@ -70,11 +70,15 @@ export default class AddStep extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        // get the form fields from the event
-        const { stepid } = this.props.match.params
-        const {id, element, placement, title, content, tutorialid } = this.state
-        const newStep = {id, element, placement, title, content, tutorialid}
-
+        const { stepid } = e.traget
+        const newStep = {
+            id: this.state.id,
+            element: this.state.element,
+            placement: this.state.placement,
+            title: this.state.title,
+            content: this.state.content,
+            tutorialid: this.state.tutorialid
+        }
 
         fetch(this.state.config.API_ENDPOINT + `api/steps/${this.state.id}`, {
             method: 'PATCH',
