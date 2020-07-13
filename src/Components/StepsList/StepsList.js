@@ -38,7 +38,9 @@ export default class StepsList extends Component {
     }
 
     deleteStep = (stepid) => {
-        
+        this.setState({
+            steps: this.state.state.filter(function (step) {
+            return step.id !== stepid})})
     }
 
     updateStep = updatedStep => {

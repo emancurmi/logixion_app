@@ -50,7 +50,7 @@ export default class TutorialList extends Component {
     }
 
     componentDidMount() {
-        fetch(this.state.config.API_ENDPOINT + 'api/tutorials/' + '?userid=' + this.state.userid, {
+        fetch(this.state.config.API_ENDPOINT + 'tutorials/' + '?userid=' + this.state.userid, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
