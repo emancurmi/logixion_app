@@ -33,11 +33,14 @@
     text-align: right;
 }
 
-input, textarea {
+input, textarea, select {
     width: 242px;
-    boder:2px;
     padding: 5px;
     margin: 5px;
+}
+
+select{
+    width:256px;
 }
 
 .btn {

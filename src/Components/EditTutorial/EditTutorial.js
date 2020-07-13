@@ -46,16 +46,12 @@ export default class EditTutorial extends Component {
             })
     }
 
-    handleChangeElement = e => {
-        this.setState({ element: e.target.value })
-    };
-
     handleChangeName = e => {
         this.setState({ name: e.target.value })
     };
 
-    backtoTutorialList() {
-        return <Redirect link={`/tourbench`}></Redirect>;
+    backtoTutorialList = () => {
+        return <Redirect from='/edittutorial/' to="/tourbench/" />;
     }
 
     handleSubmit = e => {
@@ -75,9 +71,7 @@ export default class EditTutorial extends Component {
                     return res.json().then(error => Promise.reject(error))
             })
             .then(() => {
-                this.resetFields(newToturial)
-                this.context.updateBookmark(newToturial)
-                BrowserRouter.push('/tourbench');
+                this.props.history.push("/tourbench")
             })
             .catch(error => {
                 console.error(error)
@@ -91,8 +85,8 @@ export default class EditTutorial extends Component {
             <div>
                 <div className="center red-strip">
                     <h1>Edit Tutorial {this.state.name}</h1>
-                    <form onSubmit={this.handleSubmit} > 
-                        <input type="Text" id="name" name="name" placeholder="Name" required /><br />
+                    <form onSubmit={this.handleSubmit} >
+                        <input type="Text" id="name" name="name" placeholder="Name" pattern="[A-Za-z]+" title="Tutorial name should be made up of Capital and small letters and No Spaces e.g. DefaultTour" onChange={this.handleChangeName} required /><br />
                         <button id="btnSubmit" className="btn" type="submit"><span>Save Changes</span></button>
                         <br />
                         <Link to={"/tourbench"}><button id="btnCancel" className="btn"><span>Back to List</span></button></Link>

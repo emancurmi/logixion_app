@@ -1,7 +1,5 @@
-import React from 'react'
+import React, { Component } from 'react'
 import './Step.css'
-import { Component } from 'react'
-import config from '../../config';
 import { rute, Link, Redirect } from 'react-router-dom';
 
 
@@ -15,7 +13,8 @@ export default class Step extends Component {
             placement: props.placement,
             title: props.title,
             content: props.content,
-            config: config
+            config: props.config,
+            context: props.context
         }
     }
 
@@ -28,9 +27,12 @@ export default class Step extends Component {
             }
         })
             .then(data => {
+                if (data.status == 204) {
+                    console.log(stepId);
+                    console.log(data);
 
-                this.props.context.deleteStep(stepId);
-
+                    this.state.context.deleteStep(stepId);
+                }
             })
             .catch(error => {
                 console.error(error)

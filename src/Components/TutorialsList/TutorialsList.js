@@ -1,7 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './TutorialsList.css';
-import { Component } from 'react';
-import { rute, Link } from 'react-router-dom';
 import Tutorial from '../Tutorial/Tutorial';
 import Loader from '../Loader/Loader';
 
@@ -24,6 +22,8 @@ export default class TutorialList extends Component {
             error: null,
             isLoading: false
         })
+        
+        console.log("state tutrials " + this.state.tutorials);
     }
 
     addTutorial = tutorial => {
@@ -33,12 +33,20 @@ export default class TutorialList extends Component {
     }
 
     deleteTutorial = tutorialId => {
-        const newTutorial = this.state.tutorials.filter(tutorial =>
-            tutorial.id !== tutorialId
-        )
-        this.setState({
-            tutorials: newTutorial
-        })
+        this.setState({ isLoading: true });
+
+        const newTutorials = [...this.state.tutorials];
+        let index = -1;
+        for (let i = 0; i < this.state.tutorials.length; i++) {
+            if (this.state.tutorials[i].id == tutorialId) {
+                
+                index = i;
+            }
+        }
+        if (index > -1) {
+            newTutorials.splice(index, 1);
+        }
+        this.setTutorials(newTutorials);
     }
 
     updateTutorial = updatedTutorial => {
@@ -49,7 +57,42 @@ export default class TutorialList extends Component {
         })
     }
 
-    componentDidMount() {
+    handleSubmit = e => {
+        e.preventDefault()
+        const { name, userid } = e.target
+        const step = {
+
+            name: name.value,
+            userid: this.state.userid
+        }
+        this.setState({ error: null })
+        fetch(this.state.config.API_ENDPOINT + 'tutorials/', {
+            method: 'POST',
+            body: JSON.stringify(step),
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `bearer ${this.state.config.API_KEY}`
+            }
+        })
+            .then(res => {
+                if (!res.ok) {
+                    return res.json().then(error => Promise.reject(error))
+                }
+                return res.json()
+            })
+            .then(data => {
+                name.value = ''
+                this.addTutorial(data)
+                this.setTutorials(this.state.tutorials)
+
+            })
+            .catch(error => {
+                console.error(error)
+                this.setState({ error })
+            })
+    }
+
+    fetch = () => {
         fetch(this.state.config.API_ENDPOINT + 'tutorials/' + '?userid=' + this.state.userid, {
             method: 'GET',
             headers: {
@@ -70,6 +113,10 @@ export default class TutorialList extends Component {
             })
     }
 
+    componentDidMount() {
+        this.fetch();
+    }
+
     render() {
 
         if (this.state.isLoading) {
@@ -86,7 +133,7 @@ export default class TutorialList extends Component {
         }
 
         const gentutoriallist = contextValue.tutorials.map((tutorial, i) => {
-            return <Tutorial name={tutorial.name} context={contextValue} id={tutorial.id} key={i} />
+            return <Tutorial name={tutorial.name} config={this.state.config} context={contextValue} id={tutorial.id} key={i} />
         })
 
         return (
@@ -94,12 +141,12 @@ export default class TutorialList extends Component {
                 {gentutoriallist}
                 
                 <div className="card">
-                    <h3>Create New Tutorial</h3>
-                    <br /><br />
-                    <br /><br />
-                    <Link to={"/addtutorial"}><button id="btnCreate" className="btn"><span>Start</span></button></Link>
-
-                    </div>
+                    <h1>Add Tutorial</h1>
+                    <form onSubmit={this.handleSubmit} >
+                        <input type="Text" id="name" name="name" placeholder="Name" pattern="[A-Za-z]+" title="Tutorial name should be made up of Capital and small letters Onlin e.g. DefaultTour " required /><br />
+                        <button id="btnSubmit" className="btn" type="submit"><span>Add Tutorial</span></button>
+                    </form>
+                </div>
             </div>
         )
     }

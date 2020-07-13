@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './StepsList.css';
-import { Component } from 'react';
 import config from '../../config';
 import { rute, Link } from 'react-router-dom';
 import Step from '../Step/Step';
@@ -38,9 +37,20 @@ export default class StepsList extends Component {
     }
 
     deleteStep = (stepid) => {
-        this.setState({
-            steps: this.state.state.filter(function (step) {
-            return step.id !== stepid})})
+        this.setState({ isLoading: true });
+
+        const newSteps = [...this.state.steps];
+        let index = -1;
+        for (let i = 0; i < this.state.steps.length; i++) {
+            if (this.state.steps[i].id === stepid) {
+
+                index = i;
+            }
+        }
+        if (index > -1) {
+            newSteps.splice(index, 1);
+        }
+        this.setSteps(newSteps);
     }
 
     updateStep = updatedStep => {
@@ -51,7 +61,47 @@ export default class StepsList extends Component {
         })
     }
 
-    componentDidMount() {
+    handleSubmit = e => {
+        e.preventDefault()
+        // get the form fields from the event
+        const { element, placement, title, content, tutorialid } = e.target
+        const step = {
+            element: element.value,
+            placement: placement.value,
+            title: title.value,
+            content: content.value,
+            tutorialid: this.state.tutorialid
+        }
+        this.setState({ error: null })
+        fetch(this.state.config.API_ENDPOINT + 'steps/', {
+            method: 'POST',
+            body: JSON.stringify(step),
+            headers: {
+                'content-type': 'application/json',
+                'authorization': `bearer ${this.state.config.API_KEY}`
+            }
+        })
+            .then(res => {
+                if (!res.ok) {
+                    return res.json().then(error => Promise.reject(error))
+                }
+                return res.json()
+            })
+            .then(data => {
+                element.value = ''
+                placement.value = 'bottom'
+                title.value = ''
+                content.value = ''
+                this.addStep(data)
+                this.setSteps(this.state.steps)
+            })
+            .catch(error => {
+                console.error(error)
+                this.setState({ error })
+            })
+    }
+
+    fetch = () => {
         fetch(this.state.config.API_ENDPOINT + 'steps/' + '?tutorialid=' + this.state.tutorialid, {
             method: 'GET',
             headers: {
@@ -72,6 +122,10 @@ export default class StepsList extends Component {
             })
     }
 
+    componentDidMount() {
+        this.fetch();
+    }
+
     render() {
 
         if (this.state.isLoading) {
@@ -88,7 +142,7 @@ export default class StepsList extends Component {
         }
 
         const gensteplist = contextValue.steps.map((step, i) => {
-            return <Step id={step.id} context={contextValue} element={step.element} placement={step.placement} title={step.title} content={step.content} key={i} />
+            return <Step id={step.id} context={contextValue} config={this.state.config} element={step.element} placement={step.placement} title={step.title} content={step.content} key={i} />
         })
 
         return (
@@ -96,18 +150,22 @@ export default class StepsList extends Component {
                 <h1>Steps in {this.state.tutorialname}</h1>
                 <div className="flexbox">
                     {gensteplist}
-
                     <div className="card">
-                        <h3>Create New Step</h3>
-                        <br />
-                        <br />
-                        <Link to={`/addstep?tutorialid=${this.state.tutorialid}`}>
-                            <button id="btnCreate" className="btn">
-                                <span>Start</span>
-                            </button>
-                        </Link>
-                    </div>
+                        <h3>Add Step</h3>
+                        <form onSubmit={this.handleSubmit} >
+                            <input type="Text" id="title" name="title" placeholder="Title" autoFocus required /><br />
+                            <input type="Text" id="element" name="element" placeholder="Element" pattern=".[a-z]+|.[a-z]+-[a-z]+" title="Element should start with a . only contain lowercase letters and one - e.g. .tourfile .tour-file" required /><br />
+                            <select id="placement" name="placement">
+                                <option value="top">Top</option>
+                                <option value="right">Right</option>
+                                <option value="bottom" defaultValue>Bottom</option>
+                                <option value="left">Left</option>
+                            </select>
+                            <textarea type="Text" id="content" name="content" placeholder="Description" required /><br /><br />
 
+                            <button id="btnSubmit" className="btn" type="submit"><span>Add Step</span></button>
+                        </form>
+                    </div>
                 </div>
                 <br />
                 <Link to={"/tourbench"}><button id="btnBack" className="btn"><span>Back to Tutorial List</span></button></Link>

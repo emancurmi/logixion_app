@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Tutorial.css';
 import { rute, Link } from 'react-router-dom';
-import config from '../../config';
 
 export default class Tutorial extends Component {
 
@@ -10,12 +9,13 @@ export default class Tutorial extends Component {
         this.state = {
             id: props.id,
             name: props.name,
-            config: config
+            config: props.config,
+            url: "http://localhost:8000/api/generatetutorial/" + props.id
         }
     }
 
     deleteTutorialRequest = (tutorialId) => {
-        fetch(this.state.config.API_ENDPOINT + `api/tutorials/${tutorialId}`, {
+        fetch(this.state.config.API_ENDPOINT + `tutorials/${tutorialId}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
@@ -34,7 +34,7 @@ export default class Tutorial extends Component {
         return (
             <div className="card">
                 <h3>{this.state.name}</h3>
-                <p>{this.state.url}</p>
+                <p><a href={this.state.url} target="_blank">Url</a></p>
                 <br />
                 <Link to={`../stepslist/?tutorialid=${this.state.id}&tutorialname=${this.state.name}`}><button id="btnSteps" className="btn"><span>Edit Steps</span></button></Link>
                 <br />
