@@ -14,7 +14,7 @@ export default class Tutorial extends Component {
         }
     }
 
-    deleteTutorialRequest(tutorialId) {
+    deleteTutorialRequest = (tutorialId) => {
         fetch(this.state.config.API_ENDPOINT + `api/tutorials/${tutorialId}`, {
             method: 'DELETE',
             headers: {
@@ -22,14 +22,8 @@ export default class Tutorial extends Component {
                 'authorization': `bearer ${this.state.config.API_KEY}`
             }
         })
-            .then(res => {
-                if (!res.ok) {
-                    return res.json().then(error => Promise.reject(error))
-                }
-                return res.json()
-            })
             .then(data => {
-                this.context.deleteTutorial(tutorialId)
+                this.props.context.deleteTutorial(tutorialId)
             })
             .catch(error => {
                 console.error(error)
@@ -46,8 +40,7 @@ export default class Tutorial extends Component {
                 <br />
                 <Link to={`../edittutorial?tutorialid=${this.state.id}`}><button id="btnEdit" className="btn"><span>Edit Name</span></button></Link>
                 <br />
-                <button id="btnDelete" className="btn" onClick={this.deleteTutorialRequest(this.state.id)
-                }><span>Delete</span></button>
+                <button id="btnDelete" className="btn" onClick={() => {this.deleteTutorialRequest(this.state.id) }}><span>Delete</span></button>
             </div>
         )
     }

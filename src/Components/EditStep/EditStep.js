@@ -3,6 +3,7 @@ import { rute, Link } from 'react-router-dom';
 import config from '../../config';
 import './EditStep.css';
 
+
 export default class EditStep extends Component {
 
     constructor(props) {
@@ -24,7 +25,7 @@ export default class EditStep extends Component {
     }
 
     componentDidMount() {
-        fetch(this.state.config.API_ENDPOINT + `api/steps/${this.state.id}`, {
+        fetch(this.state.config.API_ENDPOINT + `steps/${this.state.id}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${this.state.config.API_KEY}`
@@ -70,7 +71,7 @@ export default class EditStep extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        const { stepid } = e.traget
+        //const { stepid } = e.traget
         const newStep = {
             id: this.state.id,
             element: this.state.element,
@@ -80,7 +81,7 @@ export default class EditStep extends Component {
             tutorialid: this.state.tutorialid
         }
 
-        fetch(this.state.config.API_ENDPOINT + `api/steps/${this.state.id}`, {
+        fetch(this.state.config.API_ENDPOINT + `steps/${this.state.id}`, {
             method: 'PATCH',
             body: JSON.stringify(newStep),
             headers: {
@@ -93,7 +94,6 @@ export default class EditStep extends Component {
                     return res.json().then(error => Promise.reject(error))
             })
             .then(() => {
-                this.resetFields(newStep)
                 this.context.updateBookmark(newStep)
                 this.props.history.push('/')
             })
@@ -101,16 +101,6 @@ export default class EditStep extends Component {
                 console.error(error)
                 this.setState({ error })
             })
-    }
-
-    resetFields = (newFields) => {
-        this.setState({
-            id: newFields.id || '',
-            element: newFields.element || '',
-            placement: newFields.placement || '',
-            content: newFields.content || '',
-            title: newFields.title || '',
-        })
     }
 
     render() {

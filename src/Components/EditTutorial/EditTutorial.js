@@ -3,6 +3,7 @@ import { rute, Link, Redirect, BrowserRouter } from 'react-router-dom';
 import config from '../../config';
 import './EditTutorial.css';
 
+
 export default class EditTutorial extends Component {
 
     constructor(props) {
@@ -20,7 +21,7 @@ export default class EditTutorial extends Component {
 
     componentDidMount() {
         
-        fetch(this.state.config.API_ENDPOINT + `api/tutorials/${this.state.id}`, {
+        fetch(this.state.config.API_ENDPOINT + `tutorials/${this.state.id}`, {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${this.state.config.API_KEY}`
@@ -46,7 +47,11 @@ export default class EditTutorial extends Component {
     }
 
     handleChangeElement = e => {
-        this.setState({ name: e.target.name })
+        this.setState({ element: e.target.value })
+    };
+
+    handleChangeName = e => {
+        this.setState({ name: e.target.value })
     };
 
     backtoTutorialList() {
@@ -55,10 +60,9 @@ export default class EditTutorial extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        const { name } = e.target
-        const newToturial = { id:this.state.id, name:name.value, userid:this.state.userid }
+        const newToturial = { id: this.state.id, name: this.state.name, userid: this.state.userid }
 
-        fetch(this.state.config.API_ENDPOINT + `api/tutorials/${this.state.id}`, {
+        fetch(this.state.config.API_ENDPOINT + `tutorials/${this.state.id}`, {
             method: 'PATCH',
             body: JSON.stringify(newToturial),
             headers: {

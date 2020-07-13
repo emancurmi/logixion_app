@@ -32,11 +32,13 @@ class App extends Component {
                     <Route path="/login" component={Login} />
                     <Route path="/register" component={Register} />
                     <Route path="/tourbench/" component={Tourbench} />
+
                     <Route path="/stepslist/" component={StepsList} />
                     <Route path="/addstep" component={AddStep} />
                     <Route path="/addtutorial" component={AddTutorial} />
                     <Route path="/editstep" component={EditStep} />
                     <Route path="/edittutorial" component={EditTutorial} />
+
                     <Route path="/about" component={About} />
                 </div>
                 <Footer/>

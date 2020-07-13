@@ -31,19 +31,14 @@ export default class StepsList extends Component {
         })
     }
 
-    addSteps = step => {
+    addStep = step => {
         this.setState({
             steps: [...this.state.steps, step],
         })
     }
 
-    deleteStep = stepid => {
-        const newStep = this.state.steps.filter(step =>
-            step.id !== stepid
-        )
-        this.setState({
-            steps: newStep
-        })
+    deleteStep = (stepid) => {
+        
     }
 
     updateStep = updatedStep => {
@@ -55,7 +50,7 @@ export default class StepsList extends Component {
     }
 
     componentDidMount() {
-        fetch(this.state.config.API_ENDPOINT + 'api/steps/' + '?tutorialid=' + this.state.tutorialid, {
+        fetch(this.state.config.API_ENDPOINT + 'steps/' + '?tutorialid=' + this.state.tutorialid, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
@@ -91,7 +86,7 @@ export default class StepsList extends Component {
         }
 
         const gensteplist = contextValue.steps.map((step, i) => {
-            return <Step id={step.id} element={step.element} placement={step.placement} title={step.title} content={step.content} key={i} />
+            return <Step id={step.id} context={contextValue} element={step.element} placement={step.placement} title={step.title} content={step.content} key={i} />
         })
 
         return (
@@ -100,12 +95,12 @@ export default class StepsList extends Component {
                 <div className="flexbox">
                     {gensteplist}
 
-                    <div class="card">
+                    <div className="card">
                         <h3>Create New Step</h3>
                         <br />
                         <br />
                         <Link to={`/addstep?tutorialid=${this.state.tutorialid}`}>
-                            <button id="btnCreate" className="btn" onClick="parent.location='index.html'">
+                            <button id="btnCreate" className="btn">
                                 <span>Start</span>
                             </button>
                         </Link>

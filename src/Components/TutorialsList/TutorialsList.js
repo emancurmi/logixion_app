@@ -86,14 +86,14 @@ export default class TutorialList extends Component {
         }
 
         const gentutoriallist = contextValue.tutorials.map((tutorial, i) => {
-            return <Tutorial name={tutorial.name} id={tutorial.id} key={i} />
+            return <Tutorial name={tutorial.name} context={contextValue} id={tutorial.id} key={i} />
         })
 
         return (
             <div className="flexbox">
                 {gentutoriallist}
                 
-                <div class="card">
+                <div className="card">
                     <h3>Create New Tutorial</h3>
                     <br /><br />
                     <br /><br />

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { rute, Link } from 'react-router-dom';
+import { rute, Link, Redirect } from 'react-router-dom';
 import config from '../../config';
 import './AddTutorial.css';
 
@@ -25,7 +25,7 @@ export default class AddTutorial extends Component {
             userid: this.state.userid
         }
         this.setState({ error: null })
-        fetch(this.state.config.API_ENDPOINT + 'api/tutorials/', {
+        fetch(this.state.config.API_ENDPOINT + 'tutorials/', {
             method: 'POST',
             body: JSON.stringify(step),
             headers: {
@@ -42,7 +42,8 @@ export default class AddTutorial extends Component {
             .then(data => {
                 name.value = ''
                 userid.value = ''
-                this.context.AddStep(data)
+                this.context.AddTutorial(data)
+
             })
             .catch(error => {
                 console.error(error)
@@ -54,7 +55,7 @@ export default class AddTutorial extends Component {
         return (
             <div>
                 <div className="center red-strip">
-                    <h1>Add Step</h1>
+                    <h1>Add Tutorial</h1>
                     <form onSubmit={this.handleSubmit} > 
                         <input type="Text" id="name" name="name" placeholder="Name" required /><br />
                         <button id="btnSubmit" className="btn" type="submit"><span>Add Tutorial</span></button>

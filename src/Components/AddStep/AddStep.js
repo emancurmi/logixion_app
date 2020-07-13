@@ -28,7 +28,7 @@ export default class AddStep extends Component {
             tutorialid: this.state.tutorialid
         }
         this.setState({ error: null })
-        fetch(this.state.config.API_ENDPOINT + 'api/steps/', {
+        fetch(this.state.config.API_ENDPOINT + 'steps/', {
             method: 'POST',
             body: JSON.stringify(step),
             headers: {
