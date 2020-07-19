@@ -64,7 +64,7 @@ export default class StepsList extends Component {
     handleSubmit = e => {
         e.preventDefault()
         // get the form fields from the event
-        const { element, placement, title, content, tutorialid } = e.target
+        const { element, placement, title, content } = e.target
         const step = {
             element: element.value,
             placement: placement.value,
@@ -78,7 +78,7 @@ export default class StepsList extends Component {
             body: JSON.stringify(step),
             headers: {
                 'content-type': 'application/json',
-                'authorization': `bearer ${this.state.config.API_KEY}`
+                'authorization': `bearer ${this.state.config.API_TOKEN}`
             }
         })
             .then(res => {
@@ -106,7 +106,7 @@ export default class StepsList extends Component {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
-                'Authorization': `Bearer ${this.state.config.API_KEY}`
+                'Authorization': `Bearer ${this.state.config.API_TOKEN}`
             }
         })
             .then(res => {
@@ -123,7 +123,10 @@ export default class StepsList extends Component {
     }
 
     componentDidMount() {
-        this.fetch();
+        try{
+            this.fetch();
+        }
+        catch (e) { console.error(e); }
     }
 
     render() {

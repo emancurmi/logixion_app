@@ -28,7 +28,7 @@ export default class EditStep extends Component {
         fetch(this.state.config.API_ENDPOINT + `steps/${this.state.id}`, {
             method: 'GET',
             headers: {
-                'authorization': `Bearer ${this.state.config.API_KEY}`
+                'authorization': `Bearer ${this.state.config.API_TOKEN}`
             }
         })
             .then(res => {
@@ -84,7 +84,7 @@ export default class EditStep extends Component {
             body: JSON.stringify(newStep),
             headers: {
                 'content-type': 'application/json',
-                'authorization': `Bearer ${config.API_KEY}`
+                'authorization': `Bearer ${config.API_TOKEN}`
             },
             
         })

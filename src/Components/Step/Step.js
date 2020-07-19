@@ -23,7 +23,7 @@ export default class Step extends Component {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json',
-                'authorization': `bearer ${this.state.config.API_KEY}`
+                'authorization': `bearer ${this.state.config.API_TOKEN}`
             }
         })
             .then(data => {

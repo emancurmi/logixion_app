@@ -71,7 +71,7 @@ export default class TutorialList extends Component {
             body: JSON.stringify(step),
             headers: {
                 'content-type': 'application/json',
-                'authorization': `bearer ${this.state.config.API_KEY}`
+                'authorization': `bearer ${this.state.config.API_TOKEN}`
             }
         })
             .then(res => {
@@ -97,7 +97,7 @@ export default class TutorialList extends Component {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
-                'Authorization': `Bearer ${this.state.config.API_KEY}`
+                'Authorization': `Bearer ${this.state.config.API_TOKEN}`
             }
         })
             .then(res => {
