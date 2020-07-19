@@ -10,7 +10,7 @@ export default class Tutorial extends Component {
             id: props.id,
             name: props.name,
             config: props.config,
-            url: "http://logixon.herokuapp.com/api/generatetutorial/" + props.id
+            url: props.config.API_ENDPOINT + "generatetutorial/" + props.id
         }
     }
 
