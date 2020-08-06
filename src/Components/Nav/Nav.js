@@ -11,9 +11,11 @@ export default class Nav extends Component {
                 <Link className="menu-item" to="/">Home</Link>
                 <Link className="menu-item" to="/about">About</Link>
                 <Link className="menu-item" to="/tourbench">Tour Bench</Link>
-                <Link className="menu-item" to="/login">Login</Link>
-                <Link className="menu-item" to="/register">Register</Link>
+                
             </Menu>
         )
     }
 }
+
+//<Link className="menu-item" to="/login">Login</Link>
+//    <Link className="menu-item" to="/register">Register</Link>
