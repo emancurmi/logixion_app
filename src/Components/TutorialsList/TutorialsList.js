@@ -22,8 +22,6 @@ export default class TutorialList extends Component {
             error: null,
             isLoading: false
         })
-        
-        console.log("state tutrials " + this.state.tutorials);
     }
 
     addTutorial = tutorial => {

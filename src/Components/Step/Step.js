@@ -28,9 +28,6 @@ export default class Step extends Component {
         })
             .then(data => {
                 if (data.status == 204) {
-                    console.log(stepId);
-                    console.log(data);
-
                     this.state.context.deleteStep(stepId);
                 }
             })
