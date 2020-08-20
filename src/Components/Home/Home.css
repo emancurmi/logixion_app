@@ -10,3 +10,6 @@ header {
     color: #febcc8;
 }
 
+ul {
+    list-style-type: none !important;
+}

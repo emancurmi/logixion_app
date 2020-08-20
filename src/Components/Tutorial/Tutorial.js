@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Tutorial.css';
-import { rute, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default class Tutorial extends Component {
 
@@ -34,7 +34,7 @@ export default class Tutorial extends Component {
         return (
             <div className="card">
                 <h3>{this.state.name}</h3>
-                <p><a href={this.state.url} target="_blank">Url</a></p>
+                <p><a href={this.state.url} target="_blank" rel="noopener noreferrer">Url</a></p>
                 <br />
                 <Link to={`../stepslist/?tutorialid=${this.state.id}&tutorialname=${this.state.name}`}><button id="btnSteps" className="btn"><span>Edit Steps</span></button></Link>
                 <br />

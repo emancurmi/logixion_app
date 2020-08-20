@@ -36,7 +36,7 @@ export default class TutorialList extends Component {
         const newTutorials = [...this.state.tutorials];
         let index = -1;
         for (let i = 0; i < this.state.tutorials.length; i++) {
-            if (this.state.tutorials[i].id == tutorialId) {
+            if (this.state.tutorials[i].id === tutorialId) {
                 
                 index = i;
             }
@@ -57,7 +57,7 @@ export default class TutorialList extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        const { name, userid } = e.target
+        const { name } = e.target
         const step = {
 
             name: name.value,

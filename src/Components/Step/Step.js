@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Step.css'
-import { rute, Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 export default class Step extends Component {
@@ -27,7 +27,7 @@ export default class Step extends Component {
             }
         })
             .then(data => {
-                if (data.status == 204) {
+                if (data.status === 204) {
                     this.state.context.deleteStep(stepId);
                 }
             })

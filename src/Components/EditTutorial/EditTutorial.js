@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { rute, Link, Redirect, BrowserRouter } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import config from '../../config';
 import './EditTutorial.css';
 

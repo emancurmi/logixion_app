@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { rute, Router, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import config from '../../config';
 import './EditStep.css';
 
@@ -20,7 +20,6 @@ export default class EditStep extends Component {
             content: '',
             config: config,
             tutorialid: '',
-            error: null
         }
     }
 

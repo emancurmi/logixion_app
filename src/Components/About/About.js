@@ -15,7 +15,7 @@ export default class About extends Component {
                 <p>Currently, this app is to be used by developers who are creating forms on a website. We are currently developing a more user-friendly way for users to use it on their own.</p>
                 <ol>
                     <li>The first step is to make a list of all the ids of input and button fields that you would like to put in the tutorial.</li>
-                    <li>Register or log in on this site.</li>
+                    
                     <li>Create a new tutorial.</li>
                     <li>Start adding the steps one after the other.</li>
                     <li>Title - Will show as the header of the tooltip.</li>

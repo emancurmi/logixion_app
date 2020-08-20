@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './StepsList.css';
 import config from '../../config';
-import { rute, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Step from '../Step/Step';
 import Loader from '../Loader/Loader';
 
@@ -102,6 +102,9 @@ export default class StepsList extends Component {
     }
 
     fetch = () => {
+        console.log(this.state.config.API_ENDPOINT)
+        console.log(this.state.tutorialid)
+
         fetch(this.state.config.API_ENDPOINT + 'steps/' + '?tutorialid=' + this.state.tutorialid, {
             method: 'GET',
             headers: {
