@@ -15,13 +15,13 @@
     Due to the high pressure to convert paper forms to digital forms, users sometimes find it hard to understand how to fill them. An easy way for the developers to help solve this problem is to create a tutorial for the forms and guide them to fill in the information. At the moment, this solution results in a high volume of extra work for the developers and higher prices for the users.<br/>
     LogixOn gives developers an easy way to reduce the time required to develop these high-quality tutorials.
     <br />
-    <a href="https://github.com/emancurmi/logixion_app"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/emancurmi/logixion_app"><strong>Explore the docs Â»</strong></a>
     <br />
     <br />
     <a href="https://logixion-app.vercel.app/">View Demo</a>
-    ·
+    Â·
     <a href="https://github.com/emancurmi/logixion_app/issues">logixion_apprt Bug</a>
-    ·
+    Â·
     <a href="https://github.com/emancurmi/logixion_app/issues">Request Feature</a>
   </p>
 </p>
@@ -48,7 +48,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://logixion-app.vercel.app/)
+[![Logixion Home Page][Home Page]](https://github.com/emancurmi/logixion_app/blob/master/screenshots/homepage.png)
+[![Logixion Tours Page][Tours Page]](https://github.com/emancurmi/logixion_app/blob/master/screenshots/add_tutorial.png)
+[![Logixion Steps Page][Steps Page]](https://github.com/emancurmi/logixion_app/blob/master/screenshots/add_step.png)
 
 
 ### Built With
