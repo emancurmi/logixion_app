@@ -48,9 +48,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Logixion Home Page][Home Page]](https://github.com/emancurmi/logixion_app/blob/master/screenshots/homepage.png)
-[![Logixion Tours Page][Tours Page]](https://github.com/emancurmi/logixion_app/blob/master/screenshots/add_tutorial.png)
-[![Logixion Steps Page][Steps Page]](https://github.com/emancurmi/logixion_app/blob/master/screenshots/add_step.png)
+![Logixion Home Page](https://github.com/emancurmi/logixion_app/blob/master/screenshots/homepage.png)
+![Logixion Tours Page](https://github.com/emancurmi/logixion_app/blob/master/screenshots/add_tutorial.png)
+![Logixion Steps Page](https://github.com/emancurmi/logixion_app/blob/master/screenshots/add_step.png)
 
 
 ### Built With
