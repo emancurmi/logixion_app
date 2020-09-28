@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import Home from './Components/Home/Home';
-import About from './Components/About/About';
 import Tourbench from './Components/Tourbench/Tourbench';
 import StepsList from './Components/StepsList/StepsList';
 
-import Login from './Components/Login/Login';
-import Register from './Components/Register/Register';
 import EditStep from './Components/EditStep/EditStep';
 import EditTutorial from './Components/EditTutorial/EditTutorial';
 
@@ -27,15 +24,11 @@ class App extends Component {
                 <Nav />
                 <div className='App'>
                     <Route path="/" component={Home} exact />
-                    <Route path="/login" component={Login} />
-                    <Route path="/register" component={Register} />
                     <Route path="/tourbench/" component={Tourbench} />
 
                     <Route path="/stepslist/" component={StepsList} />
                     <Route path="/editstep" component={EditStep} />
                     <Route path="/edittutorial" component={EditTutorial} />
-
-                    <Route path="/about" component={About} />
                 </div>
                 <Footer/>
             </BrowserRouter>
