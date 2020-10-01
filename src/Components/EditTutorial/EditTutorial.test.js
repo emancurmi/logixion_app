@@ -13,7 +13,9 @@ it('renders without crashing', () => {
                 id= "1"
                 name= "Test Tutorial"
                 userid="1"
-                key="1" />
+                key="1"
+                location={{ search: "" }}
+            />
         </BrowserRouter>, div
     );
     ReactDOM.unmountComponentAtNode(div);

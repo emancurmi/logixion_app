@@ -10,13 +10,15 @@ it('renders without crashing', () => {
     ReactDOM.render(
         <BrowserRouter URLSearchParams="?stepid=1"> 
             <EditStep
-                id= "1"
-                element= "test"
-                placement= "top"
+                id="1"
+                element="test"
+                placement="top"
                 title="Test Title"
-                content= "this is a test"
+                content="this is a test"
                 tutorialid="1"
-                key="1" />
+                key="1"
+                location={{search:""}}
+            />
         </BrowserRouter>, div
     );
     ReactDOM.unmountComponentAtNode(div);

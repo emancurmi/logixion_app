@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Tutorial from './Tutorial';
 import { BrowserRouter } from 'react-router-dom';
-
+import config from '../../config';
 
 it('renders without crashing', () => {
     const div = document.createElement('div');
@@ -12,7 +12,7 @@ it('renders without crashing', () => {
             <Tutorial
                 id="1"
                 name="testtutorial"
-                config="config"
+                config={ config }
                 url="https://logixon.herokuapp.com/api/generatetutorial/1" />
         </BrowserRouter>, div
     );
